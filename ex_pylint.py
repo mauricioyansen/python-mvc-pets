@@ -1,5 +1,5 @@
 print("Hello World")
 
 
-def myFunction():
+def my_function():
     print("Fn")
