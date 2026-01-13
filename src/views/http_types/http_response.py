@@ -1,5 +1,7 @@
 class HttpResponse:
-    def __init__(self, status_code: int, headers: dict, body: dict = None) -> None:
+    def __init__(
+        self, status_code: int, headers: dict = None, body: dict = None
+    ) -> None:
         self.status_code = status_code
         self.headers = headers
         self.body = body
