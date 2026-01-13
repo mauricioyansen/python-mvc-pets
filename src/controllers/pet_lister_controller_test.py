@@ -10,33 +10,34 @@ class MockPetsRepository:
             Pet(id=3, name="Goldie", type="Fish"),
         ]
 
-    def test_list_pets(self):
-        controller = PetListerController(MockPetsRepository())
 
-        response = controller.list_pets()
+def test_list_pets():
+    controller = PetListerController(MockPetsRepository())
 
-        expected_response = {
-            "data": {
-                "type": "pets",
-                "count": 3,
-                "atributes": [
-                    {
-                        "id": 1,
-                        "name": "Buddy",
-                        "type": "Dog",
-                    },
-                    {
-                        "id": 2,
-                        "name": "Mittens",
-                        "type": "Cat",
-                    },
-                    {
-                        "id": 3,
-                        "name": "Goldie",
-                        "type": "Fish",
-                    },
-                ],
-            }
+    response = controller.list()
+
+    expected_response = {
+        "data": {
+            "type": "pets",
+            "count": 3,
+            "attributes": [
+                {
+                    "id": 1,
+                    "name": "Buddy",
+                    "type": "Dog",
+                },
+                {
+                    "id": 2,
+                    "name": "Mittens",
+                    "type": "Cat",
+                },
+                {
+                    "id": 3,
+                    "name": "Goldie",
+                    "type": "Fish",
+                },
+            ],
         }
+    }
 
-        assert response == expected_response
+    assert response == expected_response
