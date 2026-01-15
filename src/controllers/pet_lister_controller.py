@@ -1,3 +1,4 @@
+from typing import List
 from src.models.sqlite.interfaces.pets_repository import PetsRepositoryInterface
 from src.models.sqlite.entities.pets import Pet
 from .interfaces.pet_lister_controller import PetListerControllerInterface
@@ -11,10 +12,10 @@ class PetListerController(PetListerControllerInterface):
         pets = self.__get_pets_in_db()
         return self.__format_response(pets)
 
-    def __get_pets_in_db(self) -> list[Pet]:
+    def __get_pets_in_db(self) -> List[Pet]:
         return self.__pets_repository.list_pets()
 
-    def __format_response(self, pets: list[Pet]) -> dict:
+    def __format_response(self, pets: List[Pet]) -> dict:
         pets_list = []
         for pet in pets:
             pet_data = {"id": pet.id, "name": pet.name, "type": pet.type}
